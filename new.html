@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .circle {
+            width: 400px;
+            height: 400px;
+            background-color: antiquewhite;
+            border-radius: 50%;
+            margin-top: 180px;
+            border: 7px solid black;
+
+
+        }
+
+        html {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background-color: blanchedalmond;
+            height: 50vh;
+        }
+
+        .hour {
+            display: inline-block;
+            height: 100px;
+            color: black;
+            border: 2px solid black;
+            margin: 198px 0px 198px 200px;
+            z-index: 3;
+            translate: 0px -1073px;
+            /* transform: rotate(35deg); */
+            transform-origin: bottom;
+            position: relative;
+
+        }
+
+        .minutes {
+            display: inline-block;
+            height: 167px;
+            width: 0px;
+            color: black;
+            border: 2px solid black;
+            margin: 198px 0px 198px 200px;
+            z-index: 3;
+            /* transform: rotate(180deg); */
+            transform-origin: top;
+            position: relative;
+        }
+
+        .second {
+            display: inline-block;
+            width: 165px;
+            color: black;
+            border: 1px solid black;
+            margin: 198px 0px 198px 200px;
+            z-index: 3;
+            translate: 0px -569px;
+            /* transform: rotate(90deg); */
+            transform-origin: left;
+            position: relative;
+        }
+
+        #timee {
+            width: 80px;
+            height: 20px;
+            background-color: darkolivegreen;
+            border: 3px solid black;
+            translate: 155px -1150px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 500;
+            box-shadow: 7px;
+        }
+    </style>
+</head>
+
+<body><div class="main">
+    <div class="circle">
+        <div; class="minutes" id="minutes"></div;>
+        <div; class="second" id="second"></div;>
+        <div; class="hour" id="hour"></div;>
+        <div id="timee"></div>
+    </div></div>
+    <script>
+        // TAMES
+        function getTime() {
+            const now = new Date();
+            return {
+                hours: now.getHours(),
+                minutes: now.getMinutes(),
+                seconds: now.getSeconds()
+            };
+        }
+
+        // Rotationss
+        function rotateClockHands() {
+            const time = getTime();
+
+            const hourHand = document.querySelector(".hour");
+            const minuteHand = document.querySelector(".minutes");
+            const secondHand = document.querySelector(".second");
+
+            const hourRotation = (time.hours % 12) * 30 + time.minutes * 0.5;
+            const minuteRotation = time.minutes * 6 + time.seconds * 0.1 + 180;
+            const secondRotation = (time.seconds * 6)-90;
+
+            hourHand.style.transform = `rotate(${hourRotation}deg)`;
+            minuteHand.style.transform = `rotate(${minuteRotation}deg)`;
+            secondHand.style.transform = `rotate(${secondRotation}deg)`;
+
+        }
+
+        // HEHEHE REFRESSSHH
+        setInterval(rotateClockHands, 1000);
+
+
+        function samywala(){samay = new Date();
+        j = samay.getHours();
+        k = samay.getMinutes();
+        l = samay.getSeconds();
+        j = (j > 12) ? -12 + j : j;
+
+        j = (j < 10) ? "0" + j : j;
+        k = (k < 10) ? "0" + k : k;
+        l = (l < 10) ? "0" + l : l;
+
+        
+
+        document.querySelector('#timee').innerHTML = j + ":" + k + ":" + l;}
+        setInterval(samywala,1000);
+
+
+
+
+
+    </script>
+</body>
+
+</html>
